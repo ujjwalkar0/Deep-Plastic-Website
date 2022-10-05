@@ -19,8 +19,8 @@ class DailyStatistics(models.Model):
 class UploadImageTest(models.Model):
     image = models.ImageField(upload_to="Images/", blank=True, null=True)
     location = models.ForeignKey(User, on_delete=models.CASCADE)
-    time = models.TimeField(default=datetime.datetime.now().strftime("%H:%M:%S"))
-    date = models.DateField(default=datetime.date.today().strftime('%Y-%m-%d'), editable=False)
+    time = models.TimeField()
+    date = models.DateField()
     
     def save(self, *args, **kwargs):
         try:

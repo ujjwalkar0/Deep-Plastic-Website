@@ -46,9 +46,9 @@ class ImageViewSet(CreateAPIView):
     def post(self, request, *args, **kwargs):
         fil = request.data['image']
         location = request.user
-        print(request.user, fil)
-        UploadImageTest.objects.create(image=fil, location=location, date=datetime.date(year = datetime.datetime.today().year, month = datetime.datetime.today().month-1, day = random.randint(1,30)))
-        # image.save()
+        date = datetime.date.today().strftime('%Y-%m-%d')
+        time = datetime.datetime.now().strftime("%H:%M:%S")
+        UploadImageTest.objects.create(image=fil, location=location, date=date, time=time)
 
         return Response({'message': "Uploaded"}, status=200)
 
