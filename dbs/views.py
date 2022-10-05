@@ -110,6 +110,7 @@ class ViewData(ListView):
         return context
 
 def ViewByDate(request,pk):
+    print(pk)
     months = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "June.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
     mm, dd, yyyy = pk.split()
     dd = dd[:-1]
