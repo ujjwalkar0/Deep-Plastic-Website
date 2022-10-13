@@ -12,10 +12,10 @@ import random
 
 def UploadImage(request, path):
     # user = [i.username for i in User.objects.all()]
+    # token, created = Token.objects.get_or_create(user=request.user)
 
-    token, created = Token.objects.get_or_create(user=request.user)
-    
-    # User.objects.get(username=user[random.randint(0,9)])) #
+    user = [i.username for i in User.objects.all()]
+    token, created = Token.objects.get_or_create(user=User.objects.get(username=user[random.randint(0,7)]))
 
     url = f"http://{request.get_host()}/api/"
     if request.is_secure():
