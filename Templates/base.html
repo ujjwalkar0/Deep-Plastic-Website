@@ -42,11 +42,13 @@
                   <i class="fa fa-md fa-cloud-upload" aria-hidden="true"> Upload </i>
                 </a>
               </li>
+              {% if user.is_authenticate %}
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/get_token">
                   <i class="fa fa-md fa-key" aria-hidden="true"> Get Token</i>
                 </a>
               </li>
+              {% endif %}
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="https://github.com/ujjwalkar0/Garuda">
                   <i class="fa fa-md fa-github" aria-hidden="true"> Source Code</i>
