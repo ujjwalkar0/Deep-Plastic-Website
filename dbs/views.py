@@ -44,12 +44,9 @@ class ImageViewSet(CreateAPIView):
     authentication_classes = (TokenAuthentication,)
 
     def post(self, request, *args, **kwargs):
-        rand_int = random.randint(0,12)
         fil = request.data['image']
         location = request.user
-        date = datetime.date(year=datetime.datetime.now().year, month=datetime.datetime.now().month, day=datetime.datetime.now().day-rand_int).strftime('%Y-%m-%d')
-        # date = datetime.date.today().strftime('%Y-%m-%d')
-        # date = datetime.date.today().strftime('%Y-%m-%d')
+        date = datetime.date.today().strftime('%Y-%m-%d')
         time = datetime.datetime.now().strftime("%H:%M:%S")
         UploadImageTest.objects.create(image=fil, location=location, date=date, time=time)
 
