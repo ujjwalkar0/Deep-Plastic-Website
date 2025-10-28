@@ -14,6 +14,7 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from datetime import datetime
 import os
 
 class UserLoginView(LoginView):
@@ -85,8 +86,6 @@ class LocationStat(APIView):
 
         return Response([{"t":i.username, "y":location[i]} for i in location])
 
-        # return Response([{"t":i.location.username, "y":i.count} for i in DailyStatistics.objects.all()])
-
 
 class ViewData(ListView):
     model = UploadImageTest
@@ -152,11 +151,3 @@ def Uploader(request):
             }
 
     return render(request,'upload.html',context)
-
-# def ObjectDetect(request,a,b,c):
-#     CheckVideo(a+'/'+b+'/'+c)
-
-#     context = {
-#         'a': "Completed" #a+'/'+b+'/'+c
-#     }
-#     return render(request,'plastic.html',context)
