@@ -11,7 +11,7 @@
     {% csrf_token %}
     {{ form.as_p}}
     <button type="submit" class="btn btn-success" name="username" value ="{{user.get_username}}" onclick="load()">Submit</button>
-    <img src="/media/Loading.gif" width="40px" hidden id="loading">
+    <img src="/media/loading_icon.gif" width="40px" hidden id="loading">
 
     </form>
     <br><br>
