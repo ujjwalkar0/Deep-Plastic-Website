@@ -1,1 +1,1 @@
-web: gunicorn Nasa.wsgi
+web: gunicorn nasa.wsgi

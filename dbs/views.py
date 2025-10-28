@@ -1,23 +1,20 @@
-from django.shortcuts import render
-from .models import *
-from .serializers import ImageSerializer
-from rest_framework.generics import ListAPIView, CreateAPIView
-from django.http import HttpResponse
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
-import json
-from django.views.generic import ListView #, DeleteView, UpdateView, DetailView, CreateView
-from .forms import *
-from .utils import CheckVideo
-import os
+from dbs.forms import *
+from dbs.models import *
+from dbs.serializers import ImageSerializer
+from dbs.utils import CheckVideo
 from django.contrib.auth.views import LoginView
+from django.shortcuts import render
+from django.views import View
+from django.views.generic import ListView #, DeleteView, UpdateView, DetailView, CreateView
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.serializers import AuthTokenSerializer
-from django.views import View
-import random
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+import os
 
 class UserLoginView(LoginView):
     template_name = 'login.html'

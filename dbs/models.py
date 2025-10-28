@@ -1,8 +1,6 @@
-from typing import OrderedDict
 from django.db import models
 from django.contrib.auth.models import User
 
-import datetime
 
 class DailyStatistics(models.Model):
     date = models.DateField(max_length=20)

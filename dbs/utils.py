@@ -2,21 +2,16 @@ import cv2
 import numpy as np 
 import time
 import requests
-from datetime import datetime
-import sys
-from .models import UploadImageTest
-import datetime
 from rest_framework.authtoken.models import Token
-from django.contrib.auth.models import User
-import random
+
+
+"""
+Todo: Optimize this function
+We don't need to call an API request here. Instead, we can directly save the image to the database.
+"""
 
 def UploadImage(request, path):
-    # user = [i.username for i in User.objects.all()]
-
     token, created = Token.objects.get_or_create(user=request.user)
-    
-    # User.objects.get(username=user[random.randint(0,9)])) #
-
     url = f"http://{request.get_host()}/api/"
     if request.is_secure():
         url = f"https://{request.get_host()}/api/"
@@ -48,10 +43,6 @@ def CheckVideo(request,link):
     layer_names = net.getLayerNames()
     output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
     colors = np.random.uniform(0, 255, size=(len(classes), 3))
-
-    # Loading image
-    # img = cv2.imread("nasa.png")
-    # img = cv2.resize(img, None, fx=0.4, fy=0.4)
 
     cap = cv2.VideoCapture(link)
 
@@ -95,12 +86,8 @@ def CheckVideo(request,link):
 
         if len(class_ids) >0:
             filename = f'Trash-Image.jpg'
-            # temp = img
             cv2.imwrite(filename, img)
-            UploadImage(request, filename)
-
-            # UploadImageTest.objects.create(location=request.user, image=filename).save()
-            
+            UploadImage(request, filename)            
 
         indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
 
@@ -112,12 +99,5 @@ def CheckVideo(request,link):
                 color = colors[0]
                 cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
                 cv2.putText(img, label, (x, y + 30), font, 3, color, 3)
-
-        # key = cv2.waitKey(1)
-        # if key == 27 & 0xFF == ord('q'):
-        #     break
-
-    # cap.release()
-    # cv2.destroyAllWindows()
 
     return "Complete"

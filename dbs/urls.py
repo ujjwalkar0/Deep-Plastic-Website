@@ -1,5 +1,3 @@
-from django.contrib import admin
-from django.conf.urls import include
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
@@ -17,7 +15,6 @@ urlpatterns = [
     path('login/',UserLoginView.as_view(),name="login"),
     path('api/', ImageViewSet.as_view(), name='api'),
     path('upload/', Uploader, name='upload'),
-    # path('link/<str:a>/<str:b>/<str:c>',ObjectDetect, name='link'),
     path('<str:pk>/',ViewByDate,name='ViewByDate'),
 ]
 
