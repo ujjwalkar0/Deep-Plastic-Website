@@ -27,3 +27,65 @@ The **web interface** serves as the **central hub** for collecting, analyzing, a
 ### 🧩 Restricted Upload Access  
 - Only authenticated users (e.g., partner organizations or devices) can upload data.  
 
+---
+
+## 💡 Why It Matters  
+
+This system not only **detects** plastics but also **empowers action**:  
+- Provides **real-time monitoring** of marine pollution  
+- Generates **data-driven insights** for cleanup missions  
+- Encourages **public awareness** and behavioral change through visual impact  
+
+---
+
+## 🧰 Technology Stack  
+
+| Layer | Technology |
+|-------|-------------|
+| **Frontend** | HTML, CSS, Bootstrap |
+| **Backend** | Django (Python) |
+| **AI/ML** | YOLO Object Detection, OpenCV |
+| **Database** | SQLite / PostgreSQL |
+| **Visualization** | Matplotlib / Chart.js |
+
+---
+
+## ⚙️ How It Works  
+
+### Method 1 – Satellite/Drone/Robot Integration  
+1. Embedded computers run `ocean.py` to capture images/videos.  
+2. AI detects plastics and automatically uploads the results to the server.  
+3. Detected images appear on the web dashboard.
+
+### Method 2 – Manual Video Upload  
+1. Go to [https://oceanplastic.herokuapp.com/upload](https://oceanplastic.herokuapp.com/upload).  
+2. Upload an ocean or river video (requires credentials).  
+3. The system extracts frames, detects plastics, and stores the results in the database.  
+4. Visit the dashboard to view the detected plastics and daily stats.
+
+---
+## 🧪 Local Setup (Developers)  
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/gautamtata/DeepPlastic.git
+   cd DeepPlastic/web
+   ```
+2. **Create a virtual environment**
+  ```bash
+  python -m venv venv
+  source venv/bin/activate   # (Linux/Mac)
+  venv\Scripts\activate      # (Windows)
+  ```
+3. **Install dependencies**
+  ```bash
+  pip install -r requirements.txt
+  ```
+4. **Run the server**
+  ```bash
+  python manage.py runserver
+  ```
+5. **Open in browser**
+  ```bash
+  http://127.0.0.1:8000/
+  ```
